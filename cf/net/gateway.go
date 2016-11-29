@@ -412,9 +412,9 @@ func (gateway Gateway) doRequest(request *http.Request) (*http.Response, error) 
 	var response *http.Response
 	var err error
 
-	if gateway.transport == nil {
-		makeHTTPTransport(&gateway)
-	}
+	//if gateway.transport == nil {
+	makeHTTPTransport(&gateway)
+	//}
 
 	httpClient := NewHTTPClient(gateway.transport, NewRequestDumper(gateway.logger))
 

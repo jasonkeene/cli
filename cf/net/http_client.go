@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 
 	"code.cloudfoundry.org/cli/cf/errors"
 	. "code.cloudfoundry.org/cli/cf/i18n"
@@ -32,6 +33,7 @@ var NewHTTPClient = func(tr *http.Transport, dumper RequestDumper) HTTPClientInt
 	c := client{
 		&http.Client{
 			Transport: tr,
+			Timeout:   20 * time.Second,
 		},
 		dumper,
 	}
