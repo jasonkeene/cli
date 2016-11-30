@@ -420,14 +420,7 @@ func (gateway Gateway) doRequest(request *http.Request) (*http.Response, error) 
 
 	httpClient.DumpRequest(request)
 
-	for i := 0; i < 3; i++ {
-		response, err = httpClient.Do(request)
-		if response == nil && err != nil {
-			continue
-		} else {
-			break
-		}
-	}
+	response, err = httpClient.Do(request)
 
 	if err != nil {
 		return response, err
